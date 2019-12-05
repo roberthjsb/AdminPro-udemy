@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { pagesRouting } from './pages.routes';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficasDonutsComponent } from '../components/graficas-donuts/graficas-donuts.component';
+import { AccoutSettingsComponent } from './accout-settings/accout-settings.component';
 
 
 
@@ -20,7 +21,8 @@ import { GraficasDonutsComponent } from '../components/graficas-donuts/graficas-
     Graficas1Component,
     PagesComponent,
     IncrementadorComponent,
-    GraficasDonutsComponent
+    GraficasDonutsComponent,
+    AccoutSettingsComponent
   ],
   exports: [
     DashboardComponent,

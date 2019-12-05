@@ -36,9 +36,9 @@ export class IncrementadorComponent implements OnInit {
     return progreso;
   }
 
-  onChange($newValue: InputEvent) {
-    debugger
-    $newValue.currentTarget.value = this.limitaProgreso(Number($newValue.currentTarget.value));
+  onChange($newValue: HTMLInputElement) {
+    console.log($newValue);
+    $newValue.value = this.limitaProgreso(Number($newValue.value)).toString();
     this.cambioValor.emit(this.progreso);
   }
 
