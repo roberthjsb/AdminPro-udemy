@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { APP_ROUTING } from './app.routes';
 import { RegisterComponent } from './login/register.component';
 // Modulos
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PagesModule } from './pages/pages.module';
 import { ServicesModule } from './services/services.module';
 
@@ -22,6 +22,7 @@ import { ServicesModule } from './services/services.module';
     BrowserModule,
     PagesModule,
     FormsModule, // temporal
+    ReactiveFormsModule,
     APP_ROUTING,
     ServicesModule
   ],
