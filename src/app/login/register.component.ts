@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
 
     this.usuarioService.crearUsuario(usuario)
       .subscribe(resp => {
-        console.log(resp);
+        Swal.fire('Información', 'Usuario ha sido registrado', 'success');
       }, error => {
         console.log(error);
       });

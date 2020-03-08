@@ -11,6 +11,9 @@ import { pagesRouting } from './pages.routes';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficasDonutsComponent } from '../components/graficas-donuts/graficas-donuts.component';
 import { AccoutSettingsComponent } from './accout-settings/accout-settings.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { ProfileComponent } from './profile/profile.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -22,7 +25,8 @@ import { AccoutSettingsComponent } from './accout-settings/accout-settings.compo
     PagesComponent,
     IncrementadorComponent,
     GraficasDonutsComponent,
-    AccoutSettingsComponent
+    AccoutSettingsComponent,
+    ProfileComponent
   ],
   exports: [
     DashboardComponent,
@@ -31,10 +35,12 @@ import { AccoutSettingsComponent } from './accout-settings/accout-settings.compo
     PagesComponent
   ],
   imports: [
+    CommonModule,
     FormsModule,
     SharedModule,
     ChartsModule,
-    pagesRouting
+    pagesRouting,
+    PipesModule
   ]
 })
 export class PagesModule { }

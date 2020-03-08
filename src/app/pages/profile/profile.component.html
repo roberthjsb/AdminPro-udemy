@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-lg-7">
+    <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Perfil Usuario</h4>
+          <h6 class="card-subtitle">Nombre usuario</h6>
+            <form class="form p-t-20" #f="ngForm" (ngSubmit)="guardar(f.value)">
+                <div class="form-group">
+                    <label for="exampleInputuname">Nombre Usuario</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="ti-user"></i></div>
+                        <input [(ngModel)]="usuario.nombre" name="nombre" type="text" class="form-control"  placeholder="Nombre del usuario" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Dirección de correo</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="ti-email"></i></div>
+                        <input [(ngModel)]="usuario.email"  [disabled]="usuario.google" name="email" type="email" class="form-control" placeholder="Direccion de correo">
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="pwd1">Password</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="ti-lock"></i></div>
+                        <input type="password" class="form-control" id="pwd1" placeholder="Enter email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pwd2">Confirm Password</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="ti-lock"></i></div>
+                        <input type="password" class="form-control" id="pwd2" placeholder="Enter email">
+                    </div>
+                </div> -->
+                <!-- <div class="form-group">
+                    <div class="checkbox checkbox-success">
+                        <input id="checkbox1" type="checkbox">
+                        <label for="checkbox1"> Remember me </label>
+                    </div>
+                </div> -->
+                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                  <i class="fa fa-save"></i>
+                  Guardar
+                </button>
+                <!-- <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button> -->
+            </form>
+        </div>
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <div class="card">
+        <div class="card-body" align="center">
+          <h4 class="card-title">Foto del Usuario</h4>
+          <h6 class="card-subtitle">Nombre usuario</h6>
+          <img *ngIf="!imagenTemp" [src]="usuario.img | image" class="w150">
+          <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
+          <input (change)="imageSelected( $event)" type="file">
+          <br>
+          <br>
+          <button type="button"  (click)="cambiarImagen()" [disabled]="!imageUpload" class="btn btn-block btn-success waves-effect waves-light m-r-10">
+            <i class="fa fa-save"></i>
+            Actualizar Foto
+          </button>
+        </div>
+    </div>
+  </div>
+
+</div>

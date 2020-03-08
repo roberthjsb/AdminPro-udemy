@@ -5,6 +5,7 @@ import { URL_SERVICIOS } from 'src/app/config/app.config';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { SubirArchivosService } from '../subir-archivos.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,10 @@ export class UsuarioService {
   token: string;
   constructor(
     private http: HttpClient,
-    private router: Router) {
+    private router: Router,
+    private subirArchivoService: SubirArchivosService) {
     this.cargarStorage();
+    this.router.events.subscribe(resp => console.log('router change....'));
   }
   guardarLocalStorage(id: string, token: string, usuario: Usuario) {
     localStorage.setItem('id', id);
@@ -72,5 +75,21 @@ export class UsuarioService {
     const url = `${URL_SERVICIOS}/usuarios`;
     return this.http.post(url, usuario);
 
+  }
+  actualizarUsuario(usuario: Usuario) {
+    const url = `${URL_SERVICIOS}/usuarios/${usuario._id}?token=${this.token}`;
+    return this.http.put(url, usuario)
+      .pipe(map(resp => {
+        this.guardarLocalStorage(this.usuario._id, this.token, this.usuario);
+        return true;
+      }));
+  }
+  cambiarImagen(file: File, id: string) {
+    return this.subirArchivoService.subirArchivo(file, 'usuarios', id)
+      .pipe(map((resp: any) => {
+        this.usuario.img = resp.usuario.img;
+        this.guardarLocalStorage(this.usuario._id, this.token, this.usuario);
+        return true;
+      }));
   }
 }
