@@ -6,7 +6,9 @@ import { URL_SERVICIOS } from '../config/app.config';
   providedIn: 'root'
 })
 export class SubirArchivosService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    console.log('SubirArchivosService');
+  }
   subirArchivo(image: File, tipo: string, id: string) {
       const url = `${URL_SERVICIOS}/upload/${tipo}/${id}`;
       const formData = new FormData();

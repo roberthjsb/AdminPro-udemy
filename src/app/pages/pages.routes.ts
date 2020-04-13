@@ -6,6 +6,7 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { AccoutSettingsComponent } from './accout-settings/accout-settings.component';
 import { LoginGuard } from '../services/guards/login.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,8 @@ const routes: Routes = [
       { path: 'graficas1', component: Graficas1Component },
       { path: 'accout-settings', component: AccoutSettingsComponent },
       { path: 'profile', component: ProfileComponent },
+      //mantenimiento
+      { path: 'usuarios', component: UsuariosComponent , data:{titulo:'Mantenimiento de usuarios'}},
       { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
     ]
   },

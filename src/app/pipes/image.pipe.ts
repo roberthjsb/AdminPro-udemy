@@ -7,10 +7,9 @@ import { URL_SERVICIOS } from '../config/app.config';
 export class ImagePipe implements PipeTransform {
 
   transform(img: string, tipo: string = 'usuario'): any {
-    debugger;
     let url = URL_SERVICIOS + '/imagenes';
     if (!img) {
-      return url + 'usuario/xxx';
+      return url + '/usuario/xxx';
     }
     if (img.indexOf('https') >= 0) {
       return img;

@@ -80,7 +80,18 @@ export class UsuarioService {
     const url = `${URL_SERVICIOS}/usuarios/${usuario._id}?token=${this.token}`;
     return this.http.put(url, usuario)
       .pipe(map(resp => {
-        this.guardarLocalStorage(this.usuario._id, this.token, this.usuario);
+        if(usuario._id=== this.usuario._id){
+          this.guardarLocalStorage(this.usuario._id, this.token, this.usuario);
+        }
+        return true;
+      }));
+  }
+  borrarUsuario(usuario: Usuario) {
+    const url = `${URL_SERVICIOS}/usuarios/${usuario._id}?token=${this.token}`;
+    return this.http.delete(url)
+      .pipe(map(borrado => {
+        console.log(borrado);
+        this.cargarUsuarios();
         return true;
       }));
   }
@@ -91,5 +102,13 @@ export class UsuarioService {
         this.guardarLocalStorage(this.usuario._id, this.token, this.usuario);
         return true;
       }));
+  }
+  cargarUsuarios(desde: number = 0) {
+    const url = `${URL_SERVICIOS}/usuarios?desde=${desde}`;
+    return this.http.get(url);
+  }
+  buscarUsuario(busqueda: string) {
+    const url = `${URL_SERVICIOS}/busqueda/colecciones/usuarios/${busqueda}`;
+    return this.http.get(url);
   }
 }

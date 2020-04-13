@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class ProfileComponent implements OnInit {
   usuario: Usuario;
   imageUpload: File = null;
-  imagenTemp:string;
+  imagenTemp: string;
   constructor(private usuarioServ: UsuarioService) {
     this.usuario = this.usuarioServ.usuario;
   }
@@ -36,23 +36,22 @@ export class ProfileComponent implements OnInit {
       this.imageUpload = null;
       return;
     }
-    if(archivo.type.indexOf('image') < 0){
+    if (archivo.type.indexOf('image') < 0) {
       this.imageUpload = null;
       Swal.fire('Error', 'Solo puede selecionar imagenes', 'error');
     }
     this.imageUpload = archivo;
-    let reader = new FileReader();
-    let urlTempReader = reader.readAsDataURL(archivo);
-    reader.onloadend = ()=> this.imagenTemp = reader.result as string;
+    const reader = new FileReader();
+    const urlTempReader = reader.readAsDataURL(archivo);
+    reader.onloadend = () => this.imagenTemp = reader.result as string;
   }
 
   cambiarImagen() {
     this.usuarioServ.cambiarImagen(this.imageUpload, this.usuario._id).subscribe((respOK) => {
       if (respOK) {
-        this.usuario= this.usuarioServ.usuario;
+        this.usuario = this.usuarioServ.usuario;
         Swal.fire('Imagen actualizada', this.usuario.nombre, 'success');
         return;
-
       }
     });
   }

@@ -9,7 +9,15 @@ export class SidebarService {
       { titulo: 'Dashboard', url: '/dashboard' },
       { titulo: 'ProgressBar', url: '/progress' },
       { titulo: 'Graficas', url: '/graficas1' }
-    ]
+    ]},
+    {
+      titulo: 'Mantenimiento',
+      icono: 'mdi mdi-folder-lock-open',
+      submenu: [
+        { titulo: 'Usuarios', url: '/usuarios' },
+        { titulo: 'Hospitales', url: '/hospitales' },
+        { titulo: 'Médicos', url: '/medicos' }
+      ]
   }]
   constructor() { }
 }
