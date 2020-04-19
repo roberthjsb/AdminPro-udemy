@@ -41,7 +41,6 @@ export class ModalUploadComponent implements OnInit {
     // this.oculto= this.modalUplaod.oculto;
   }
   imageSelected(event: any) {
-    console.log('imageSelected............');
     const archivo = event.target.files[0];
     if (!archivo) {
       this.imageUpload = null;

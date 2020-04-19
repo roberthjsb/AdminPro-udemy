@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="form-group">
+          <label for=""></label>
+          <input
+            type="text"
+            #input
+            class="form-control"
+            placeholder="Buscar hospital..."
+            (keyup)="buscarHospital(input.value)"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="loading">
+  <div class="col-sm-12">
+    <div class="alert alert-warning text-center" role="alert">
+      <strong>Cargando</strong>
+      <br />
+      <i class="fa fa-refresh fa-spin fa-2x" aria-hidden="true"></i>
+      <br />
+      <span>Espere por favor</span>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-right">
+          <button (click)="crearHospital()" class="btn wave-effect wave-light btn-rounded btn-primary">
+            <i class="fa fa-plus"></i>
+            <span>Crear Hospital</span>
+          </button>
+        </div>
+        <h4 class="card-title">
+          Hospitales registrados (<small> {{ totalRegistros }} </small>)
+        </h4>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Foto</th>
+              <th>Hospital</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let hospital of hospitales">
+              <td scope="row">
+                <img
+                  [src]="hospital.img | image: 'hospitales'"
+                  alt=""
+                  class="img-50"
+                  (click)="mostrarModal(hospital._id)"
+                />
+              </td>
+              <td >
+                <input
+                  type="text"
+                  [(ngModel)]="hospital.nombre"
+                  (blur)="closeEditor(hospital._id)"
+                  (keyup.esc)="closeEditor(hospital._id)"
+                  #inputEditor
+                  *ngIf="editarItem === hospital._id"
+                />
+                <span (click)="editar(hospital._id)" *ngIf="editarItem !== hospital._id">{{
+                  hospital.nombre
+                }}</span>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="guardarHospital(hospital)"
+                >
+                  <i class="fa fa-save"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="borrarHospital(hospital)"
+                >
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

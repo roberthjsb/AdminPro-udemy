@@ -18,7 +18,7 @@ export class UsuariosComponent implements OnInit {
 
   ngOnInit() {
     this.cargarUsuarios();
-    this.uploadModalService.notificacion.subscribe(resp=>{
+    this.uploadModalService.notificacion.subscribe(resp => {
       this.cargarUsuarios();
     });
   }
@@ -90,7 +90,7 @@ export class UsuariosComponent implements OnInit {
     });
   }
   mostrarModal(id: string) {
-    console.log({id});
+    console.log({ id });
     this.uploadModalService.mostrarModal('usuarios', id);
   }
 
